@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GymDetailsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="company" Type="varchar" MaxLength="50" />
+          <Property Name="totalquantity" Type="int" />
+          <Property Name="priceperquantity" Type="int" />
+          <Property Name="totalprice" Type="int" />
+          <Property Name="date" Type="date" />
+        </EntityType>
+        <EntityType Name="fees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="plantype" Type="varchar" MaxLength="50" />
+          <Property Name="dateofjoining" Type="datetime" />
+          <Property Name="amount" Type="int" />
+        </EntityType>
+        <EntityType Name="history_equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="company" Type="varchar" MaxLength="50" />
+          <Property Name="totalquantity" Type="int" />
+          <Property Name="priceperquantity" Type="int" />
+          <Property Name="totalprice" Type="int" />
+          <Property Name="date" Type="date" />
+        </EntityType>
+        <EntityType Name="history_fees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="mid" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="plantype" Type="varchar" MaxLength="50" />
+          <Property Name="dateofjoining" Type="datetime" />
+          <Property Name="amount" Type="int" />
+        </EntityType>
+        <EntityType Name="history_instructor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" />
+          <Property Name="lastname" Type="varchar" MaxLength="50" />
+          <Property Name="contactno" Type="int" />
+          <Property Name="address" Type="varchar" MaxLength="150" />
+          <Property Name="dateofjoining" Type="varchar" MaxLength="150" />
+          <Property Name="salary" Type="int" />
+          <Property Name="schedule" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="history_member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" />
+          <Property Name="lastname" Type="varchar" MaxLength="50" />
+          <Property Name="contactno" Type="int" />
+          <Property Name="address" Type="varchar" MaxLength="150" />
+          <Property Name="PlanType" Type="varchar" MaxLength="50" />
+          <Property Name="dateofjoining" Type="datetime" />
+          <Property Name="amount" Type="int" />
+        </EntityType>
+        <EntityType Name="instructor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" />
+          <Property Name="lastname" Type="varchar" MaxLength="50" />
+          <Property Name="contactno" Type="int" />
+          <Property Name="address" Type="varchar" MaxLength="150" />
+          <Property Name="dateofjoining" Type="datetime" />
+          <Property Name="schedule" Type="int" />
+          <Property Name="salary" Type="int" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" />
+          <Property Name="lastname" Type="varchar" MaxLength="50" />
+          <Property Name="contactno" Type="int" />
+          <Property Name="address" Type="varchar" MaxLength="150" />
+          <Property Name="PlanType" Type="varchar" MaxLength="50" />
+          <Property Name="dateofjoining" Type="datetime" />
+          <Property Name="amount" Type="int" />
+        </EntityType>
+        <EntityType Name="plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="amount" Type="int" />
+        </EntityType>
+        <EntityType Name="positions">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="HourlyRate" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="BasicSalary" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GymDetailsModelStoreContainer">
+          <EntitySet Name="equipment" EntityType="Self.equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fees" EntityType="Self.fees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="history_equipment" EntityType="Self.history_equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="history_fees" EntityType="Self.history_fees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="history_instructor" EntityType="Self.history_instructor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="history_member" EntityType="Self.history_member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="instructor" EntityType="Self.instructor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="plan" EntityType="Self.plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="positions" EntityType="Self.positions" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GymDetailsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="totalquantity" Type="Int32" />
+          <Property Name="priceperquantity" Type="Int32" />
+          <Property Name="totalprice" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="history_equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="totalquantity" Type="Int32" />
+          <Property Name="priceperquantity" Type="Int32" />
+          <Property Name="totalprice" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="history_fees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="mid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="plantype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateofjoining" Type="DateTime" Precision="3" />
+          <Property Name="amount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="history_instructor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contactno" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="dateofjoining" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Int32" />
+          <Property Name="schedule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="history_member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contactno" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="dateofjoining" Type="DateTime" Precision="3" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="PlanType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="instructor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contactno" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="dateofjoining" Type="DateTime" Precision="3" />
+          <Property Name="schedule" Type="Int32" />
+          <Property Name="salary" Type="Int32" />
+        </EntityType>
+        <EntityType Name="plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="position">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HourlyRate" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GymDetailsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="equipments" EntityType="Self.equipment" />
+          <EntitySet Name="history_equipment" EntityType="Self.history_equipment" />
+          <EntitySet Name="history_fees" EntityType="Self.history_fees" />
+          <EntitySet Name="history_instructor" EntityType="Self.history_instructor" />
+          <EntitySet Name="history_member" EntityType="Self.history_member" />
+          <EntitySet Name="instructors" EntityType="Self.instructor" />
+          <EntitySet Name="plans" EntityType="Self.plan" />
+          <EntitySet Name="positions" EntityType="Self.position" />
+          <EntitySet Name="fees" EntityType="GymDetailsModel.fee" />
+          <EntitySet Name="members" EntityType="GymDetailsModel.member" />
+        </EntityContainer>
+        <EntityType Name="fee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="plantype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateofjoining" Type="DateTime" Precision="3" />
+          <Property Name="amount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contactno" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PlanType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateofjoining" Type="DateTime" Precision="3" />
+          <Property Name="amount" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GymDetailsModelStoreContainer" CdmEntityContainer="GymDetailsEntities">
+          <EntitySetMapping Name="equipments">
+            <EntityTypeMapping TypeName="GymDetailsModel.equipment">
+              <MappingFragment StoreEntitySet="equipment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="totalquantity" ColumnName="totalquantity" />
+                <ScalarProperty Name="priceperquantity" ColumnName="priceperquantity" />
+                <ScalarProperty Name="totalprice" ColumnName="totalprice" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="history_equipment">
+            <EntityTypeMapping TypeName="GymDetailsModel.history_equipment">
+              <MappingFragment StoreEntitySet="history_equipment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="totalquantity" ColumnName="totalquantity" />
+                <ScalarProperty Name="priceperquantity" ColumnName="priceperquantity" />
+                <ScalarProperty Name="totalprice" ColumnName="totalprice" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="history_fees">
+            <EntityTypeMapping TypeName="GymDetailsModel.history_fees">
+              <MappingFragment StoreEntitySet="history_fees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="mid" ColumnName="mid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="plantype" ColumnName="plantype" />
+                <ScalarProperty Name="dateofjoining" ColumnName="dateofjoining" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="history_instructor">
+            <EntityTypeMapping TypeName="GymDetailsModel.history_instructor">
+              <MappingFragment StoreEntitySet="history_instructor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="dateofjoining" ColumnName="dateofjoining" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="schedule" ColumnName="schedule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="history_member">
+            <EntityTypeMapping TypeName="GymDetailsModel.history_member">
+              <MappingFragment StoreEntitySet="history_member">
+                <ScalarProperty Name="PlanType" ColumnName="PlanType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="dateofjoining" ColumnName="dateofjoining" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="instructors">
+            <EntityTypeMapping TypeName="GymDetailsModel.instructor">
+              <MappingFragment StoreEntitySet="instructor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="dateofjoining" ColumnName="dateofjoining" />
+                <ScalarProperty Name="schedule" ColumnName="schedule" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plans">
+            <EntityTypeMapping TypeName="GymDetailsModel.plan">
+              <MappingFragment StoreEntitySet="plan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="positions">
+            <EntityTypeMapping TypeName="GymDetailsModel.position">
+              <MappingFragment StoreEntitySet="positions">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HourlyRate" ColumnName="HourlyRate" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fees">
+            <EntityTypeMapping TypeName="GymDetailsModel.fee">
+              <MappingFragment StoreEntitySet="fees">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="dateofjoining" ColumnName="dateofjoining" />
+                <ScalarProperty Name="plantype" ColumnName="plantype" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="members">
+            <EntityTypeMapping TypeName="GymDetailsModel.member">
+              <MappingFragment StoreEntitySet="member">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="dateofjoining" ColumnName="dateofjoining" />
+                <ScalarProperty Name="PlanType" ColumnName="PlanType" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
